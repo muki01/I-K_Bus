@@ -1,4 +1,4 @@
-# 🚗BMW I/K Bus
+# 🚙BMW I/K Bus
 This code is for reading the I/K Bus in BMW Cars. With this code you can read sensor values, control lights, windows and much more.
 I shared schematics with optocouplers and chips. I used Arduino nano as microcontroller, but you can use another microcontrollers like STM32, ESP32 and much more.
 
