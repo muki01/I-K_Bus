@@ -5,10 +5,10 @@ I shared schematics with optocouplers and chips. I used Arduino nano as microcon
 I will share more information about I/K Bus protocol and communication later. Stay tuned 😉.
 
 ## This is the schematic with Optocouplers
-![Optocoupler Schematic](https://raw.githubusercontent.com/muki01/I-K_Bus/main/Schematics/Optocoupler%20Schematic.png?token=GHSAT0AAAAAACMIS3KNIRTBKYBLMXB2JGT4ZO7YPZQ)
+![Optocoupler Schematic](https://github.com/muki01/I-K_Bus/blob/main/Schematics/Optocoupler%20Schematic.png)
 
 ## This is the schematic with TH3122.4 or ELMOS 10026B
-![TH3122.4 or ELMOS 10026B](https://raw.githubusercontent.com/muki01/I-K_Bus/main/Schematics/TH3122.4%20or%20ELMOS%2010026B.png?token=GHSAT0AAAAAACMIS3KNSVCYOBZCFDYNIPE2ZO7YRXQ)
+![TH3122.4 or ELMOS 10026B](https://github.com/muki01/I-K_Bus/blob/main/Schematics/TH3122.4%20or%20ELMOS%2010026B.png)
 
 ## This is the schematic with MCP2025
-![MCP2025](https://raw.githubusercontent.com/muki01/I-K_Bus/main/Schematics/MCP2025.png?token=GHSAT0AAAAAACMIS3KMQRRQ5C37NPLF5HOCZO7YQ2A)
+![MCP2025](https://github.com/muki01/I-K_Bus/blob/main/Schematics/MCP2025.png)
