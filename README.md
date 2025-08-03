@@ -12,8 +12,12 @@ I shared schematics with optocouplers and chips. I used Arduino nano as microcon
 I will share more information about I/K Bus protocol and communication later. Stay tuned 😉.
 
 You can also see my other car projects:
-1. [Тhis](https://github.com/muki01/OBD2_K-line_Reader) project is for Cars with ISO9141 and ISO14230 protocols.
+1. [Тhis](https://github.com/muki01/I-K_Bus) project is for BMW with I/K bus system. 
 2. [Тhis](https://github.com/muki01/OBD2_CAN_Bus_Reader) project is for Cars with CAN Bus.
+3. [Тhis](https://github.com/muki01/OBD2_K-line_Reader) project is for Cars with ISO9141 and ISO14230 protocols.
+4. [Тhis](https://github.com/muki01/OBD2_CAN_Bus_Library) is my OBD2 CAN Bus Communication Library for Arduino IDE.
+5. [Тhis](https://github.com/muki01/OBD2_KLine_Library) is my OBD2 K-Line Communication Library for Arduino IDE.
+<!--6. [Тhis](https://github.com/muki01/I-K_Bus_Library) is my I/K Bus Communication Library for Arduino IDE.-->
 
 
 > [!WARNING] 
