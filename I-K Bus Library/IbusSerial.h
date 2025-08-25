@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 #include "HardwareSerial.h"
-#include "IbusGlobals.h"
 #include "RingBuffer.h"
 
 #define IBUS_DEBUG

@@ -1,6 +1,6 @@
-#include <avr/interrupt.h>
 #include <IbusSerial.h>
 #include <SoftwareSerial.h>
+#include "E46_Codes.h"
 SoftwareSerial debugSerial(7, 8);
 IbusSerial ibus;
 

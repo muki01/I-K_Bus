@@ -1,7 +1,3 @@
-#include <Arduino.h>
-#ifndef IbusGlobals_h
-#define IbusGlobals_h
-
 // Special Modes
 // const byte ParkLights_And_Signals[13] PROGMEM = {0x3F, 0x0B, 0xBF, 0x0C, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x01};
 // const byte ParkLights_And_Signals_And_FogLights[13] PROGMEM = {0x3F, 0x0B, 0xBF, 0x0C, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x06, 0x00};
@@ -84,5 +80,3 @@ const byte VOL_INCREMENT[64] PROGMEM = {
     0, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126,
     128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176,
     178, 180, 182, 184, 186, 188, 190, 192}; // Volume increments
-
-#endif
