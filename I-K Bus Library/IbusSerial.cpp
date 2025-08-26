@@ -151,10 +151,13 @@ void IbusSerial::compareIbusPacket() {
 }
 
 void IbusSerial::write(const byte message[], byte size) {
-  ibusSendBuffer.write(size);
+  byte checksum = calculateChecksum(message, size);  // Calculate checksum
+
+  ibusSendBuffer.write(size + 1);
   for (int i = 0; i < size; i++) {
     ibusSendBuffer.write(pgm_read_byte(&message[i]));
   }
+  ibusSendBuffer.write(checksum);
 }
 
 void IbusSerial::sendIbusMessageIfAvailable() {
@@ -170,12 +173,21 @@ void IbusSerial::sendIbusPacket() {
   int Length = ibusSendBuffer.read();
   if (digitalRead(senStaPin) == LOW && Length <= 32) {  // digitalRead(senStaPin) == LOW &&
 #if defined(IBUS_DEBUG)
-    IbusDebug->println(F("TRANSMITING CODE"));
+    IbusDebug->print(F("TRANSMITING CODE: "));
 #endif
     for (int i = 0; i < Length; i++) {
       byte dataByte = ibusSendBuffer.read();
       IbusSerial->write(dataByte);  // write byte to IBUS.
+#if defined(IBUS_DEBUG)
+      if (dataByte < 0x10) IbusDebug->print(F("0"));
+      IbusDebug->print(dataByte, HEX);
+      IbusDebug->print(F(" "));
+#endif
     }
+#if defined(IBUS_DEBUG)
+    IbusDebug->println();
+    IbusDebug->println();
+#endif
   } else {
     ibusSendBuffer.remove(Length);
     return;
@@ -193,6 +205,14 @@ void IbusSerial::sleep() {
       digitalWrite(enablePin, LOW);  // Shutdown TH3122
     }
   }
+}
+
+byte IbusSerial::calculateChecksum(const byte *data, byte length) {
+  byte checksum = 0;
+  for (byte i = 0; i < length; i++) {
+    checksum ^= data[i];
+  }
+  return checksum;
 }
 
 void IbusSerial::run() {

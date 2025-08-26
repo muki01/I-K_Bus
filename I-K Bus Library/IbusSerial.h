@@ -23,6 +23,7 @@ class IbusSerial {
   void contentionTimer();
   void startTimer();
   void sleepEnable(unsigned long sleepTime);
+  byte calculateChecksum(const byte *data, byte length);
   void sleep();
 
  private:
