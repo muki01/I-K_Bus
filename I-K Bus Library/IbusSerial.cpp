@@ -11,8 +11,7 @@ unsigned long packetTimer = millis();
 RingBuffer ibusReceiveBuffer(128);
 RingBuffer ibusSendBuffer(64);
 
-IbusSerial::IbusSerial()  // constructor
-{
+IbusSerial::IbusSerial() {  // constructor
   busInSync = false;
   ibusSleepTime = millis();
   packetTimer = millis();
@@ -27,8 +26,7 @@ IbusSerial::IbusSerial()  // constructor
   contentionTimer();
 }
 
-IbusSerial::~IbusSerial()  // deconstructor
-{
+IbusSerial::~IbusSerial() {  // deconstructor
 }
 
 void IbusSerial::setIbusSerial(HardwareSerial &newIbusSerial) {
@@ -64,15 +62,13 @@ void IbusSerial::readIbus() {
         if (length >= 0x03 && length <= 0x24) {  // Check if length byte between decimal 3 & 36
           ibusState = FIND_MESSAGE;
         } else {
-          // remove source byte and start over
-          ibusReceiveBuffer.remove(1);
+          ibusReceiveBuffer.remove(1);  // remove source byte and start over
         }
       }
       break;
 
     case FIND_MESSAGE:
-      if (ibusReceiveBuffer.available() >= length + 2)  // Check if enough bytes in buffer to complete message (based on length byte)
-      {
+      if (ibusReceiveBuffer.available() >= length + 2) {  // Check if enough bytes in buffer to complete message (based on length byte)
         byte checksumByte = 0;
         for (int i = 0; i <= length; i++) {
           checksumByte ^= ibusReceiveBuffer.peek(i);
@@ -98,7 +94,6 @@ void IbusSerial::readIbus() {
           && source != 0x44  // SES
           && source != 0x00  // RLS
       ) {
-        // remove unwanted message from buffer and start over
 #ifdef IBUS_DEBUG
         IbusDebug->print(F("DISCARDED: "));
         for (int i = 0; i <= length + 1; i++) {
@@ -110,17 +105,15 @@ void IbusSerial::readIbus() {
         }
         IbusDebug->println();
 #endif
-        ibusReceiveBuffer.remove(length + 2);
+        ibusReceiveBuffer.remove(length + 2);  // remove unwanted message from buffer and start over
         ibusState = FIND_SOURCE;
         return;
       }
-      // read message from buffer
-      for (int i = 0; i <= length + 1; i++) {
+      for (int i = 0; i <= length + 1; i++) {  // read message from buffer
         ibusByte[i] = ibusReceiveBuffer.read();
       }
 #ifdef IBUS_DEBUG
-      // debug print good message
-      printDebugMessage("Good Message -> ");
+      printDebugMessage("Good Message -> ");  // debug print good message
 #endif
       busInSync = true;
       compareIbusPacket();
@@ -129,11 +122,9 @@ void IbusSerial::readIbus() {
 
     case BAD_CHECKSUM:
 #ifdef IBUS_DEBUG
-      // debug print bad message
-      printDebugMessage("Message Bad -> ");
+      printDebugMessage("Message Bad -> ");  // debug print bad message
 #endif
-      // remove first byte and start over
-      ibusReceiveBuffer.remove(1);
+      ibusReceiveBuffer.remove(1);  // remove first byte and start over
       ibusState = FIND_SOURCE;
       break;
 
@@ -167,8 +158,7 @@ void IbusSerial::write(const byte message[], byte size) {
 }
 
 void IbusSerial::sendIbusMessageIfAvailable() {
-  if (clearToSend && ibusSendBuffer.available() > 0)  // clearToSend &&
-  {
+  if (clearToSend && ibusSendBuffer.available() > 0) {  // clearToSend &&
     if (millis() - packetTimer >= packetGap) {
       sendIbusPacket();
       packetTimer = millis();
@@ -178,8 +168,7 @@ void IbusSerial::sendIbusMessageIfAvailable() {
 
 void IbusSerial::sendIbusPacket() {
   int Length = ibusSendBuffer.read();
-  if (digitalRead(senStaPin) == LOW && Length <= 32)  // digitalRead(senStaPin) == LOW &&
-  {
+  if (digitalRead(senStaPin) == LOW && Length <= 32) {  // digitalRead(senStaPin) == LOW &&
 #if defined(IBUS_DEBUG)
     IbusDebug->println(F("TRANSMITING CODE"));
 #endif
