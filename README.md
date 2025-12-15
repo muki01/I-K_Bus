@@ -45,7 +45,7 @@ There are several locations in a BMW E46 where you can tap into the K-Bus wiring
  - Radio K-Bus wiring
  - K-Bus junction block (above fuse box)
 
-#### CD Changer Connector
+#### 1. CD Changer Connector
 
 This is the easiest place to connect an Arduino or similar interface.
 
@@ -64,6 +64,20 @@ Ground wire color: Brown </br>
 <img src="https://github.com/user-attachments/assets/97caebba-a70d-4942-9719-27ab205abc5b" width=30%>
 <img src="https://github.com/user-attachments/assets/533fbc3a-88c3-4680-a70a-eb40f322cd6e" width=30%>
 
+#### 2. K-Bus junction block (above fuse box)
+The K-Bus line can also be accessed at the junction block located above the fuse box.
+
+- Used as a central distribution point for the K-Bus
+- K-Bus wire color: White / Red with Yellow dots
+
+From this point, you can tap the K-Bus line. +12V and GND must be taken from another location.
+
+📷 Photos below:
+
+<img width="30%" src="https://github.com/user-attachments/assets/ec82d99d-8513-423b-8a5d-ba343372bc39" />
+<img width="23%" src="https://github.com/user-attachments/assets/8826ea1a-691a-4a71-bc7f-ec63ecb5e486" />
+<img width="33%" src="https://github.com/user-attachments/assets/f1cdddcf-d070-4638-a611-9fd835a9931c" />
+<img width="30%" src="https://github.com/user-attachments/assets/2e64254e-ea59-4758-a92b-0ae215f1ce00" />
 
 ## 🔧 Installation
 
