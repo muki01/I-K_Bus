@@ -38,6 +38,33 @@ E83|X3|2003 - 2010||✅
 E85|Z4|2002 - 2008||✅
 E87|1 series|2004 - 2013||✅
 
+## 🔌 Where Can We Connect to the K-Bus? (BMW E46 Example)
+There are several locations in a BMW E46 where you can tap into the K-Bus wiring. Below are common and practical connection points.
+
+ - CD Changer connector – Trunk
+ - Radio K-Bus wiring
+ - K-Bus junction block (above fuse box)
+
+#### CD Changer Connector
+
+This is the easiest place to connect an Arduino or similar interface.
+
+- Provides +12V, GND, and K-Bus in one connector
+- CD Changer is optional, but the wiring is usually present
+- Located in the trunk, driver’s side, behind trim
+
+Connector: X18180 (BMW WDS) </br>
+K-Bus wire color: White / Red with Yellow dots </br>
+Ground wire color: Brown </br>
+12V wire color: Red/ Green </br>
+
+📷 Photos below:
+
+<img src="https://github.com/user-attachments/assets/ab4edfaf-d4b3-4959-bf2b-50629cbed732" width=30%>
+<img src="https://github.com/user-attachments/assets/97caebba-a70d-4942-9719-27ab205abc5b" width=30%>
+<img src="https://github.com/user-attachments/assets/533fbc3a-88c3-4680-a70a-eb40f322cd6e" width=30%>
+
+
 ## 🔧 Installation
 
 1. Clone this repository or download the `.zip` file
