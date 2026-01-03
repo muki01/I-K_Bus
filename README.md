@@ -6,8 +6,9 @@
 ![GitHub License](https://img.shields.io/github/license/muki01/I-K_Bus?style=flat)
 ![GitHub last commit](https://img.shields.io/github/last-commit/muki01/I-K_Bus)
 
-This code is for reading the I/K Bus in BMW Cars. With this code you can read sensor values, control lights, windows and much more.
-I shared schematics with optocouplers and chips. I used Arduino nano as microcontroller, but you can use another microcontrollers like STM32, ESP32 and much more.
+Unlock the full potential of your BMW's communication network. This project provides a comprehensive solution for interfacing with the BMW I-Bus (Instrumentation Bus) and K-Bus (Body Bus) using microcontrollers like Arduino, ESP32, or STM32.
+
+With this project, you can sniff bus traffic, read real-time sensor data, and send custom commands to control lights, windows, locks, and multimedia systems.
 
 I will share more information about I/K Bus protocol and communication later. Stay tuned 😉.
 
@@ -23,6 +24,15 @@ You can also see my other car projects:
 
 > [!WARNING] 
 > I am not responsible for any issues or damages that may occur during your testing. Please proceed with caution and at your own risk.
+
+## 🌟 Overview
+The I/K-Bus is a single-wire, serial communication protocol used in classic BMW models (E38, E39, E46, E53, etc.). It operates at 9600 baud, 8E1 (Even Parity). This repository contains the source code and hardware schematics needed to bridge this automotive protocol with modern development boards.
+
+## 🚀 Key Features
+- Real-time Sniffing: Monitor every message sent across the bus.
+- Bi-directional Control: Not just reading; you can inject packets to control car modules.
+- Multi-Platform Support: Tested on Arduino Nano, but compatible with ESP32, STM32, and Teensy.
+- Hardware Flexibility: Includes schematics for Optocouplers, TH3122, and MCP2025.
 
 ## 📡Supported BMW Models
 This protocol applies to the bus system in the models listed below.
@@ -88,6 +98,8 @@ From this point, you can tap the K-Bus line. +12V and GND must be taken from ano
 4. Set the correct COM port and upload the code
 
 ## 🛠️Schematics for communication
+Interfacing a 5V/3.3V microcontroller with a 12V bus requires level shifting. I have provided three verified methods:
+
 ### 🔹Schematic with Optocouplers
 <img src="https://github.com/muki01/I-K_Bus/blob/main/Schematics/Optocoupler%20Schematic.png" width=60%>
 
