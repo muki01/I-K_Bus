@@ -1,115 +1,160 @@
-# 🚙BMW I/K Bus
+<div align="center">
 
-![GitHub forks](https://img.shields.io/github/forks/muki01/I-K_Bus?style=flat)
+# 🚙 BMW I/K Bus — Interface for Classic BMW
+
+**A complete solution for interfacing with the BMW I-Bus and K-Bus using Arduino, ESP32, STM32 or Raspberry Pi Pico — sniff bus traffic, read live data and inject commands to control lights, windows, locks and multimedia on classic BMWs (E38, E39, E46, E53 and more).**
+
 ![GitHub Repo stars](https://img.shields.io/github/stars/muki01/I-K_Bus?style=flat)
+![GitHub forks](https://img.shields.io/github/forks/muki01/I-K_Bus?style=flat)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/muki01/I-K_Bus?style=flat)
 ![GitHub License](https://img.shields.io/github/license/muki01/I-K_Bus?style=flat)
 ![GitHub last commit](https://img.shields.io/github/last-commit/muki01/I-K_Bus)
+![Arduino](https://img.shields.io/badge/Arduino-00979D?logo=arduino&logoColor=white)
+![ESP32](https://img.shields.io/badge/ESP32-000000?logo=espressif&logoColor=red)
+![BMW](https://img.shields.io/badge/Vehicle-BMW-0066B1)
 
-Unlock the full potential of your BMW's communication network. This project provides a comprehensive solution for interfacing with the BMW I-Bus (Instrumentation Bus) and K-Bus (Body Bus) using microcontrollers like Arduino, ESP32, or STM32.
+</div>
 
-With this project, you can sniff bus traffic, read real-time sensor data, and send custom commands to control lights, windows, locks, and multimedia systems.
-
-I will share more information about I/K Bus protocol and communication later. Stay tuned 😉.
-
-You can also see my other car projects:
-1. [Тhis](https://github.com/muki01/I-K_Bus) project is for BMW with I/K bus system. 
-2. [Тhis](https://github.com/muki01/OBD2_CAN_Bus_Reader) project is for Cars with CAN Bus.
-3. [Тhis](https://github.com/muki01/OBD2_K-line_Reader) project is for Cars with ISO9141 and ISO14230 protocols.
-4. [Тhis](https://github.com/muki01/OBD2_CAN_Bus_Library) is my OBD2 CAN Bus Communication Library for Arduino IDE.
-5. [Тhis](https://github.com/muki01/OBD2_KLine_Library) is my OBD2 K-Line Communication Library for Arduino IDE.
-6. [Тhis](https://github.com/muki01/VAG_KW1281) project is for VAG Cars with KW1281 protocol.
-<!--7. [Тhis](https://github.com/muki01/I-K_Bus_Library) is my I/K Bus Communication Library for Arduino IDE.-->
-
-
-> [!WARNING] 
-> I am not responsible for any issues or damages that may occur during your testing. Please proceed with caution and at your own risk.
+---
 
 ## 🌟 Overview
-The I/K-Bus is a single-wire, serial communication protocol used in classic BMW models (E38, E39, E46, E53, etc.). It operates at 9600 baud, 8E1 (Even Parity). This repository contains the source code and hardware schematics needed to bridge this automotive protocol with modern development boards.
 
-## 🚀 Key Features
-- Real-time Sniffing: Monitor every message sent across the bus.
-- Bi-directional Control: Not just reading; you can inject packets to control car modules.
-- Multi-Platform Support: Tested on Arduino Nano, but compatible with ESP32, STM32, and Teensy.
-- Hardware Flexibility: Includes schematics for Optocouplers, TH3122, and MCP2025.
+An Arduino / ESP32 interface and library for the **BMW I-Bus (Instrumentation Bus)** and **K-Bus (Body Bus)**. It lets you **sniff bus traffic, decode messages in real time, and inject commands** to control lights, windows, locks and multimedia modules on classic BMWs — using microcontrollers like **Arduino, ESP32, STM32 or Raspberry Pi Pico**.
 
-## 📡Supported BMW Models
-This protocol applies to the bus system in the models listed below.
+The I/K-Bus is a **single-wire serial protocol** used in classic BMW models (E38, E39, E46, E53, etc.), operating at **9600 baud, 8E1 (even parity)**. This repository contains the source code, an Arduino library and hardware schematics needed to bridge this automotive protocol with modern development boards.
 
-Model|Series|Period|I-Bus|K-Bus
-:--|:--|:--|:--|:--
-E31|8 Series|1989 - 1999|✅|
-E38|7 Series|1999 - 2001|✅|✅
-E39|5 Series|1995 - 2004|✅|✅
-E46|3 Series|1997 - 2006||✅
-E52|Z8|2000 - 2003||✅
-E53|X5|1999 - 2006|✅|✅|
-E83|X3|2003 - 2010||✅
-E85|Z4|2002 - 2008||✅
-E87|1 series|2004 - 2013||✅
+## 💼 Hire Me
 
-## 🔌 Where Can We Connect to the K-Bus? (BMW E46 Example)
-There are several locations in a BMW E46 where you can tap into the K-Bus wiring. Below are common and practical connection points.
+I design custom automotive diagnostic tools, firmware and apps — this is what I do professionally. Whether you need a full product or just the communication layer, I can help.
 
- - CD Changer connector – Trunk
- - Radio K-Bus wiring
- - K-Bus junction block (above fuse box)
+- **Custom protocol implementation** — BMW I/K-Bus, K-Line (ISO 9141-2 / KWP2000), CAN bus, and other manufacturer-specific protocols (VAG KW1281, and more)
+- **Custom bus & protocol communication code** — low-level drivers and communication routines for any automotive bus or proprietary/custom protocol you need
+- **ECU security access** — seed-key (security access) algorithms and unlock routines for KWP2000 / UDS ECUs
+- **Custom mobile & desktop apps** — Android / iOS / web companion apps to visualize, log and control your device
+- **Bespoke hardware** — diagnostic shields & PCBs designed around your requirements
+- **ECU communication & reverse engineering** — bus sniffing, packet decoding, module control, undocumented buses
+- **Embedded firmware** — Arduino, ESP32, ESP8266, STM32, Raspberry Pi Pico
 
-#### 1. CD Changer Connector
+Need something else related to **automotive communication or electronics**? Just reach out — if it involves cars, buses or embedded hardware, I can most likely help.
 
-This is the easiest place to connect an Arduino or similar interface.
+**Have a project in this space?** → 📧 **[muksin.muksin04@gmail.com](mailto:muksin.muksin04@gmail.com)**
 
-- Provides +12V, GND, and K-Bus in one connector
-- CD Changer is optional, but the wiring is usually present
-- Located in the trunk, driver’s side, behind trim
+## ✨ Features
 
-Connector: X18180 (BMW WDS) </br>
-K-Bus wire color: White / Red with Yellow dots </br>
-Ground wire color: Brown </br>
-12V wire color: Red/ Green </br>
+**Bus Communication**
+- 🔍 **Real-time sniffing** — monitor and decode every message on the bus.
+- 🔁 **Bi-directional control** — not just reading; inject packets to control car modules.
+- 📦 **Packet decoding** — source, length, destination and data parsing via the `IbusSerial` library.
+- 💤 **Sleep / wake handling** — automatic bus sleep support to avoid draining the battery.
 
-📷 Photos below:
+**Hardware & Platforms**
+- 🧩 **Multi-platform** — tested on Arduino Nano; compatible with ESP32, STM32, Raspberry Pi Pico and more.
+- 🛠️ **Hardware flexibility** — schematics for optocouplers, TH3122 / ELMOS and MCP2025.
+- ⚡ **Standard bus timing** — 9600 baud, 8E1, single-wire, matching the classic-BMW spec.
 
-<img src="https://github.com/user-attachments/assets/ab4edfaf-d4b3-4959-bf2b-50629cbed732" width=30%>
-<img src="https://github.com/user-attachments/assets/97caebba-a70d-4942-9719-27ab205abc5b" width=30%>
-<img src="https://github.com/user-attachments/assets/533fbc3a-88c3-4680-a70a-eb40f322cd6e" width=30%>
+### 📨 Message Frame Format
 
-#### 2. K-Bus junction block (above fuse box)
-The K-Bus line can also be accessed at the junction block located above the fuse box.
+Every I/K-Bus message follows the same structure:
 
-- Used as a central distribution point for the K-Bus
-- K-Bus wire color: White / Red with Yellow dots
+| Byte | Field | Description |
+|------|-------|-------------|
+| 0 | **Source** | Sender module ID |
+| 1 | **Length** | Number of bytes from *Destination* to *Checksum* |
+| 2 | **Destination** | Target module ID |
+| 3 … n-1 | **Data** | Command byte + payload |
+| n | **Checksum** | XOR of all preceding bytes |
 
-From this point, you can tap the K-Bus line. +12V and GND must be taken from another location.
+## 📡 Supported BMW Models
 
-📷 Photos below:
+| Model | Series | Period | I-Bus | K-Bus |
+| :-- | :-- | :-- | :-- | :-- |
+| E31 | 8 Series | 1989–1999 | ✅ | |
+| E38 | 7 Series | 1999–2001 | ✅ | ✅ |
+| E39 | 5 Series | 1995–2004 | ✅ | ✅ |
+| E46 | 3 Series | 1997–2006 | | ✅ |
+| E52 | Z8 | 2000–2003 | | ✅ |
+| E53 | X5 | 1999–2006 | ✅ | ✅ |
+| E83 | X3 | 2003–2010 | | ✅ |
+| E85 | Z4 | 2002–2008 | | ✅ |
+| E87 | 1 Series | 2004–2013 | | ✅ |
+
+## 🚀 Quick Start
+
+First, build a bus interface from one of the [Schematics](#-schematics-for-communication) below and tap into the bus — see [Where to Connect](#-where-to-connect-to-the-k-bus-bmw-e46-example). Then install the library and pick an example that fits your goal:
+
+1. **Install the library** — [BMW I/K Bus Library](https://github.com/muki01/I-K_Bus_Library) in the Arduino IDE.
+2. **Choose an example sketch:**
+
+### 🔍 Just reading / sniffing? → `Basic_Code`
+Reads and decodes all traffic on the bus and prints it to a debug serial — the fastest way to see what's happening.
+
+👉 **Sketch:** [`Codes/Basic_Code`](Codes/Basic_Code)
+
+### 🎛️ Controlling an E46? → `E46_KBus_Code`
+Example for reading and sending commands to K-Bus modules on the BMW E46.
+
+👉 **Sketch:** [`Codes/E46_KBus_Code`](Codes/E46_KBus_Code)
+
+3. **Select your board** (Arduino Nano, ESP32, …), set the COM port, and upload.
+
+> ⚠️ **Disclaimer:** This is a hobby / development project. I am not responsible for any issues or damage that may occur during testing. Injecting packets onto a live vehicle bus can affect its modules — proceed with caution and at your own risk.
+
+## 🔌 Where to Connect to the K-Bus (BMW E46 Example)
+
+Common, practical places to tap the K-Bus wiring:
+- **CD Changer connector** – trunk
+- **Radio K-Bus wiring**
+- **K-Bus junction block** (above the fuse box)
+
+### 1. CD Changer Connector
+The easiest place to connect an Arduino or similar interface.
+- Provides **+12V, GND and K-Bus** in one connector
+- CD changer is optional, but the wiring is usually present
+- Located in the trunk, driver's side, behind the trim
+
+> Connector: **X18180** (BMW WDS) · K-Bus wire: **White/Red with yellow dots** · Ground: **Brown** · 12V: **Red/Green**
+
+<img src="https://github.com/user-attachments/assets/ab4edfaf-d4b3-4959-bf2b-50629cbed732" width="30%">
+<img src="https://github.com/user-attachments/assets/97caebba-a70d-4942-9719-27ab205abc5b" width="30%">
+<img src="https://github.com/user-attachments/assets/533fbc3a-88c3-4680-a70a-eb40f322cd6e" width="30%">
+
+### 2. K-Bus Junction Block (above the fuse box)
+A central distribution point for the K-Bus.
+- K-Bus wire color: **White/Red with yellow dots**
+- Tap the K-Bus here; take **+12V and GND** from another location.
 
 <img width="30%" src="https://github.com/user-attachments/assets/ec82d99d-8513-423b-8a5d-ba343372bc39" />
 <img width="23%" src="https://github.com/user-attachments/assets/8826ea1a-691a-4a71-bc7f-ec63ecb5e486" />
 <img width="33%" src="https://github.com/user-attachments/assets/f1cdddcf-d070-4638-a611-9fd835a9931c" />
 <img width="30%" src="https://github.com/user-attachments/assets/2e64254e-ea59-4758-a92b-0ae215f1ce00" />
 
-## 🔧 Installation
+## 🛠️ Schematics for Communication
 
-1. Clone this repository or download the `.zip` file
-2. Open the `.ino` file with Arduino IDE
-3. Select your board (e.g., Arduino Nano, ESP32)
-4. Set the correct COM port and upload the code
+Interfacing a 5V / 3.3V microcontroller with the 12V single-wire bus requires level shifting. Pick the approach that suits your project:
 
-## 🛠️Schematics for communication
-Interfacing a 5V/3.3V microcontroller with a 12V bus requires level shifting. I have provided three verified methods:
+### 🔹 Optocouplers
+<img src="https://raw.githubusercontent.com/muki01/I-K_Bus/main/Schematics/Optocoupler%20Schematic.png" width="60%">
 
-### 🔹Schematic with Optocouplers
-<img src="https://github.com/muki01/I-K_Bus/blob/main/Schematics/Optocoupler%20Schematic.png" width=60%>
+A simple, low-cost and electrically isolated interface — great for prototyping and safe experimentation.
 
-### 🔹Schematic with TH3122.4 or ELMOS 10026B
-<img src="https://github.com/muki01/I-K_Bus/blob/main/Schematics/TH3122.4%20or%20ELMOS%2010026B.png" width=60%>
+### 🔹 TH3122.4 or ELMOS 10026B
+<img src="https://raw.githubusercontent.com/muki01/I-K_Bus/main/Schematics/TH3122.4%20or%20ELMOS%2010026B.png" width="60%">
 
-### 🔹Schematic with MCP2025
-<img src="https://github.com/muki01/I-K_Bus/blob/main/Schematics/MCP2025.png" width=60%>
+Dedicated BMW bus transceiver ICs with built-in level shifting and protection — the most reliable, production-grade option.
 
----
+### 🔹 MCP2025
+<img src="https://raw.githubusercontent.com/muki01/I-K_Bus/main/Schematics/MCP2025.png" width="60%">
+
+A LIN transceiver-based interface — a compact, standards-based alternative.
+
+## 🔗 Related Projects
+
+Part of a full automotive communication & diagnostics ecosystem:
+
+| Firmware & Readers | Libraries | Manufacturer Protocols | UI |
+|--------------------|-----------|------------------------|-----|
+| [OBD2 K-line Reader](https://github.com/muki01/OBD2_K-line_Reader) | [OBD2 K-Line Library](https://github.com/muki01/OBD2_KLine_Library) | [BMW I/K Bus](https://github.com/muki01/I-K_Bus) | [OBD2 Diagnostic UI](https://github.com/muki01/OBD2-Diagnostic-UI) |
+| [OBD2 CAN Bus Reader](https://github.com/muki01/OBD2_CAN_Bus_Reader) | [OBD2 CAN Bus Library](https://github.com/muki01/OBD2_CAN_Bus_Library) | [VAG KW1281](https://github.com/muki01/VAG_KW1281) | |
 
 ## ☕ Support My Work
 
@@ -123,8 +168,14 @@ If you enjoy my projects and want to support me, you can do so through the links
 
 ## 📬 Contact
 
-For information, job offers, collaboration, sponsorship, or purchasing my devices, you can contact me via email.
+For custom development, job offers, collaboration, sponsorship, or purchasing my devices, feel free to reach out.
 
-📧 Email: muksin.muksin04@gmail.com
+📧 **Email:** [muksin.muksin04@gmail.com](mailto:muksin.muksin04@gmail.com)
 
 ---
+
+<div align="center">
+
+Created by [**Muki**](https://github.com/muki01) · If you find this useful, consider giving it a ⭐
+
+</div>
