@@ -89,6 +89,8 @@ void setup() {
   server.on("/api/settings", HTTP_POST, handleSettings);
   server.on("/api/awake", HTTP_POST, handleAwake);
   server.on("/api/sleep", HTTP_POST, handleSleep);
+  const char *headers[] = {"If-None-Match"};  // lets handleRoot see what the phone has in its cache
+  server.collectHeaders(headers, 1);
   server.begin();
 }
 
@@ -250,9 +252,18 @@ String toHex(byte value) {
   return value < 0x10 ? "0" + hex : hex;
 }
 
+// The page is stored gzip-compressed and sent as it is. The phone keeps it in its
+// cache; when it already has this version, the answer is an empty "not modified".
 void handleRoot() {
   touchWeb();
-  server.send_P(200, "text/html", WEB_PAGE);
+  if (server.header("If-None-Match") == WEB_PAGE_ETAG) {
+    server.send(304);
+    return;
+  }
+  server.sendHeader("Content-Encoding", "gzip");
+  server.sendHeader("Cache-Control", "no-cache");
+  server.sendHeader("ETag", WEB_PAGE_ETAG);
+  server.send_P(200, "text/html", (const char *)WEB_PAGE_GZ, WEB_PAGE_GZ_SIZE);
 }
 
 void handleCommands() {
