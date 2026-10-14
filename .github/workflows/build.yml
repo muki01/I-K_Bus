@@ -62,6 +62,10 @@ jobs:
       - name: Check that both copies of E46_Codes.h are identical
         run: cmp Codes/E46_KBus_Code/E46_Codes.h Codes/E46_KBus_ESP32/E46_Codes.h
 
+      - name: Check that WebPage.h holds web/index.html
+        if: matrix.sketch == 'E46_KBus_ESP32'
+        run: python3 Codes/E46_KBus_ESP32/web/make_webpage.py --check
+
       - name: Set a Wi-Fi password for the build
         if: matrix.sketch == 'E46_KBus_ESP32'
         run: sed -i 's/#define WIFI_PASSWORD ""/#define WIFI_PASSWORD "build-check"/' Codes/E46_KBus_ESP32/Config.h
