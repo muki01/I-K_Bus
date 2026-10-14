@@ -95,12 +95,14 @@ git clone https://github.com/muki01/BMW_IBus_KBus.git
 
 <table>
   <tr>
-    <td width="33%"><img src="images/esp32-web-interface-control.png" alt="ESP32 web interface on a phone, Control tab: sleep countdown, category chips and buttons for the lights and locks"></td>
-    <td width="33%"><img src="images/esp32-web-interface-monitor.png" alt="ESP32 web interface on a phone, Monitor tab: live K-Bus messages with sender and receiver"></td>
-    <td width="33%"><img src="images/esp32-web-interface-settings.png" alt="ESP32 web interface on a phone, Settings tab: key fob functions, sleep timers and device information"></td>
+    <td width="25%"><img src="images/esp32-web-interface-control.png" alt="ESP32 web interface on a phone, Control tab: a white BMW E46 M3, the switch-off timer and quick buttons for lock, unlock, trunk and hazard lights"></td>
+    <td width="25%"><img src="images/esp32-web-interface-commands.png" alt="ESP32 web interface on a phone, Control tab scrolled to the light and lock buttons, the low beam button just pressed"></td>
+    <td width="25%"><img src="images/esp32-web-interface-monitor.png" alt="ESP32 web interface on a phone, Monitor tab: live K-Bus messages with sender, receiver, colour-coded bytes and checksum check"></td>
+    <td width="25%"><img src="images/esp32-web-interface-settings.png" alt="ESP32 web interface on a phone, Settings tab: light or dark theme, car colour, key fob functions and switch-off timers"></td>
   </tr>
   <tr>
     <td align="center"><b>Control</b></td>
+    <td align="center"><b>Commands</b></td>
     <td align="center"><b>Monitor</b></td>
     <td align="center"><b>Settings</b></td>
   </tr>
@@ -108,9 +110,12 @@ git clone https://github.com/muki01/BMW_IBus_KBus.git
 
 The ESP32 creates its own Wi-Fi network and serves a single page that behaves like an app — it works without internet and without installing anything.
 
-- **Control** — every button sends one message from [`E46_Codes.h`](Codes/E46_KBus_ESP32/E46_Codes.h). Filter by category — lights, locks, windows, interior, wipers — and see at a glance how long the ESP32 stays awake. The buttons are defined in [`Commands.h`](Codes/E46_KBus_ESP32/Commands.h); add, remove or reorder a line to change the page.
-- **Monitor** — the last 20 messages on the bus, newest first, with the sending and receiving module named.
-- **Settings** — switch the key-fob light functions on or off, adjust both sleep timers and put the device to sleep. Settings are stored in flash.
+- **Control** — the car at the top shows what you send: angel eyes, low beams, fog lights, indicators, interior light and wipers light up and move on the drawing. Quick buttons for lock, unlock, trunk and hazard lights sit right below it, together with how long the ESP32 stays on.
+- **Commands** — every button sends one message from [`E46_Codes.h`](Codes/E46_KBus_ESP32/E46_Codes.h), grouped into lights, locks, windows, interior and wipers. The buttons are defined in [`Commands.h`](Codes/E46_KBus_ESP32/Commands.h); add, remove or reorder a line to change the page.
+- **Monitor** — the last 20 messages on the bus, newest first, with the sending and receiving module named, the bytes colour-coded and the checksum checked.
+- **Settings** — light or dark theme and the colour of the car (both kept on the phone), the key-fob light functions, both sleep timers and a button to switch the device off. Device settings are stored in flash.
+
+The page itself is [`web/index.html`](Codes/E46_KBus_ESP32/web/index.html). The ESP32 stores it gzip-compressed in `WebPage.h` (about 31 KB) and the phone keeps it in its cache, so opening the page again costs the ESP32 almost nothing. After changing the page, run `python make_webpage.py` in the `web` folder to rebuild `WebPage.h`.
 
 ### How sleep works
 
